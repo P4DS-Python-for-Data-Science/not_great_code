@@ -2,11 +2,10 @@
 
 
 import pandas as pd, numpy as np, os, json, re,  matplotlib.pyplot as plt
-get_ipython().run_line_magic('matplotlib', 'inline')
 
 
 jsonData=[]
-with open('modcloth_final_data.json') as f:
+with open('modcloth_small_data.json') as f:
     for line in f.readlines():
         jsonData.append(json.loads(line))
 modcloth_data = pd.DataFrame(jsonData)
@@ -42,6 +41,8 @@ data = pd.pivot_table(data=pcsiv_df,values='rgb',index='year',aggfunc="nunique")
 plt.plot(data)
 plt.axvline(x=2004,c='r')
 plt.ylabel('unique colors per year')
+
+plt.savefig('graph.png')
 
 
 
