@@ -12,14 +12,14 @@ def height_converter(x):
     if pd.isna(x): 
         return x
     else:
-        split_x=x.split('ft'); height_in_inches_converted_from_string=int(split_x[0])*12
+        split_x=x.split('ft'); height_in_inches=int(split_x[0])*12
         if len(split_x)==2:
             if split_x[1]=='':
                 pass
             else:
-                height_in_inches_converted_from_string=height_in_inches_converted_from_string+int(split_x[1].split('in')[0])
+                height_in_inches=height_in_inches+int(split_x[1].split('in')[0])
 
-        return height_in_inches_converted_from_string
+        return height_in_inches
 
 modcloth_data['height']=modcloth_data['height'].apply(height_converter)
 
