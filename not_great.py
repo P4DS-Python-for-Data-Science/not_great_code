@@ -1,8 +1,4 @@
-
-
-
 import pandas as pd, numpy as np, os, json, re,  matplotlib.pyplot as plt
-
 
 jsonData=[]
 with open('modcloth_small_data.json') as f:
@@ -30,13 +26,13 @@ def height_converter(x):
 modcloth_data['height']=modcloth_data['height'].apply(height_converter)
 
 
-s  = pd.read_csv('sets.csv')
+sets  = pd.read_csv('sets.csv')
 c = pd.read_csv('colors.csv')
 iv_df = pd.read_csv('inventories.csv')
 i_p_df = pd.read_csv('inventory_parts.csv')
 p_and_c = i_p_df.merge(c,left_on='color_id',right_on='id',how='inner')
 pcs_df = p_and_c.merge(iv_df,left_on='inventory_id',right_on='id',how='inner')
-pcsiv_df = pcs_df.merge(s ,left_on='set_num',right_on='set_num',how='inner')
+pcsiv_df = pcs_df.merge(sets ,left_on='set_num',right_on='set_num',how='inner')
 data = pd.pivot_table(data=pcsiv_df,values='rgb',index='year',aggfunc="nunique")
 plt.plot(data)
 plt.axvline(x=2004,c='r')
