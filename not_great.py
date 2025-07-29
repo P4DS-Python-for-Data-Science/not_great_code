@@ -1,7 +1,13 @@
 
 
 
-import pandas as pd, numpy as np, os, json, re,  matplotlib.pyplot as plt
+import pandas as pd
+import numpy as np
+import os
+import json
+import re
+import matplotlib.pyplot as plt
+
 get_ipython().run_line_magic('matplotlib', 'inline')
 
 
